@@ -19,8 +19,6 @@ export async function compileYul(
   for (const file of files) {
     const cwdPath = path.relative(process.cwd(), file);
 
-    console.log(`Compiling ${cwdPath}...`);
-
     const yulOutput = await _compileYul(cwdPath, file);
 
     const sourceName = await localPathToSourceName(paths.root, file);
@@ -44,8 +42,6 @@ export async function compileYulp(
   const allArtifacts = [];
   for (const file of files) {
     const cwdPath = path.relative(process.cwd(), file);
-
-    console.log(`Compiling ${cwdPath}...`);
 
     const yulOutput = await _compileYulp(cwdPath, file);
 
@@ -114,6 +110,7 @@ async function _compileYul(filepath: string, filename: string) {
       })
     )
   );
+
   if (output.errors && output.errors.length > 0) {
     throw new Error(
       `hardhat-yul: error compiling ${filename}: ${util.inspect(
@@ -130,11 +127,18 @@ async function _compileYul(filepath: string, filename: string) {
     output.contracts["Target.yul"][contractObjects[0]]["evm"]["bytecode"][
       "object"
     ];
+  const deployedBytecode =
+    "0x" +
+    output.contracts["Target.yul"][contractObjects[0]]["evm"]["deployedBytecode"][
+      "object"
+    ];
+
   const contractCompiled = {
     _format: "hh-sol-artifact-1",
     sourceName: filename,
     abi: [], // needs to be an empty array to not cause issues with typechain
     bytecode: bytecode,
+    bytecode_runtime: deployedBytecode,
   };
 
   return contractCompiled;
