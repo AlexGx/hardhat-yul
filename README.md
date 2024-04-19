@@ -10,8 +10,6 @@ This plugin adds support for Yul and Yul+ to Hardhat. Once installed, Yul contra
 
 The Yul compiler is run using the [official solc compiler](https://github.com/ethereum/solc-js#readme).
 
-The Yul+ compiler is run using the [Yul+ transpiler from FuelLabs](https://github.com/FuelLabs/yulp) before being passed to the Yul compiler.
-
 ## Installation
 
 First, you need to install the plugin by running
@@ -54,7 +52,7 @@ Add the following if you want to deploy and/or test your Yul sources. In `hardha
 const config: HardhatUserConfig = {
   solidity: "0.8.20",
 
-  yulArtifacts: { 
+  yulArtifacts: {
     <contract_name>: {   // Must be the name of the contract defined by Yul source
       abi: [
         {

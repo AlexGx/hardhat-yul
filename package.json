@@ -38,9 +38,7 @@
     "@nomiclabs/hardhat-docker": "^2.0.2",
     "fs-extra": "^11.1.1",
     "glob": "^10.3.3",
-    "solc": "^0.8.21",
-    "solpp": "^0.11.5",
-    "yulp": "^0.2.3"
+    "solc": "^0.8.21"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
