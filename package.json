@@ -25,7 +25,7 @@
     "tests": "mocha --recursive \"test/**/*.ts\" --exit",
     "test:yul": "sh ./scripts/test.sh",
     "build": "tsc --build .",
-    "clean": "rimraf dist",
+    "clean": "rm -rf dist",
     "prepublish": "npm run build"
   },
   "files": [
@@ -65,7 +65,6 @@
     "hardhat-gas-reporter": "^1.0.8",
     "mocha": "^10.2.0",
     "prettier": "3.0.0",
-    "rimraf": "^5.0.1",
     "solidity-coverage": "^0.8.1",
     "ts-node": "^10.9.1",
     "typechain": "^8.2.0",
